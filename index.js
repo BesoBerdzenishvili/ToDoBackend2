@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-// const workoutRoutes = require('./routes/workouts')
+const taskRoutes = require("./routes/tasks");
 
 mongoose.set("strictQuery", true);
 
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use('/api/workouts', workoutRoutes)
+app.use("/api/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
   const routesText = `
@@ -28,13 +28,12 @@ app.get("/", (req, res) => {
   </div>
   
   <pre>
-  WORKOUT: 111
+  TASK: 111
 
-  router.post('/api/workout'),
-  router.get('/api/ workout/:id'),
-  router.get('/api/workouts’),
-  router.patch('/api/workouts/:id),
-  router.delete('/api/workouts/:id),
+  router.post('/api/task'),
+  router.get('/api/tasks’),
+  router.patch('/api/tasks/:id),
+  router.delete('/api/tasks/:id),
   </pre>
     `;
   res.status(200).send(routesText);
